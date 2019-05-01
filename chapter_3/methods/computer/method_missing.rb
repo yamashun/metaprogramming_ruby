@@ -1,4 +1,4 @@
-class Computer
+class Computer < BasicObject
   def initialize(computer_id, data_source)
     @id = computer_id
     @data_source = data_source
@@ -11,10 +11,6 @@ class Computer
     result = "#{name.capitalize}: #{info} (#{price})"
     return "* #{result}" if price >= 100
     result
-  end
-
-  def respond_to_missing?(method, include_private = false)
-    @data_source.respond_to?("get_#{method}_info") || super
   end
 end
 
